@@ -40,7 +40,8 @@ Ensure you have the following installed on your local machine:
     ```
     pip install -r requirements.txt
     ```
-3. Run the server:
+3. Add your INFURA_API_KEY to .env file. You can get it by doing registration on this link: https://www.infura.io/
+4. Run the server:
     ```
     python manage.py runserver
     ```
