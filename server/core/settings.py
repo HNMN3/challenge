@@ -10,8 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
-from pathlib import Path
+import os
 from datetime import timedelta
+from pathlib import Path
+
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -39,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+
     # Modules
     'corsheaders',
     'rest_framework',
@@ -186,12 +191,13 @@ SIMPLE_JWT = {
     # A string like "example.com", or None for standard domain cookie.
     'AUTH_COOKIE_DOMAIN': None,
     # Whether the auth cookies should be secure (https:// only).
-    'AUTH_COOKIE_SECURE': True, 
+    'AUTH_COOKIE_SECURE': True,
     # Http only cookie flag.It's not fetch by javascript.
     'AUTH_COOKIE_HTTP_ONLY': True,
     'AUTH_COOKIE_PATH': '/',        # The path of the auth cookie.
-    # Whether to set the flag restricting cookie leaks on cross-site requests. This can be 'Lax', 'Strict', or None to disable the flag.
-    'AUTH_COOKIE_SAMESITE': "None", # TODO: Modify to Lax
+    # Whether to set the flag restricting cookie leaks on cross-site requests.
+    # This can be 'Lax', 'Strict', or None to disable the flag.
+    'AUTH_COOKIE_SAMESITE': "None",  # TODO: Modify to Lax
 }
 
 
@@ -207,3 +213,6 @@ REST_FRAMEWORK = {
 }
 
 AUTH_USER_MODEL = 'user.User'
+
+INFURA_API_KEY = os.getenv('INFURA_API_KEY')
+assert INFURA_API_KEY, "INFURA_API_KEY is not set"
